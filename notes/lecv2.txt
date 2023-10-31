@@ -1,0 +1,309 @@
+Microsoft Windows [Version 10.0.19045.3324]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\cmroh>mysql -u root -u
+mysql: [ERROR] mysql: option '-u' requires an argument.
+
+C:\Users\cmroh>mysql -u root -p
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 33
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| movie2             |
+| movie_             |
+| mysql              |
+| performance_schema |
+| rohit_1            |
+| rohit_2            |
+| sakila             |
+| ssbackend          |
+| sys                |
+| world              |
++--------------------+
+11 rows in set (0.04 sec)
+
+mysql> use ssbackend;
+Database changed
+mysql> desc second;
++--------+-------------------------------+------+-----+------------+-------+
+| Field  | Type                          | Null | Key | Default    | Extra |
++--------+-------------------------------+------+-----+------------+-------+
+| name   | varchar(15)                   | NO   |     | NULL       |       |
+| dob    | date                          | YES  |     | 2023-08-23 |       |
+| gender | enum('male','female','other') | YES  |     | NULL       |       |
++--------+-------------------------------+------+-----+------------+-------+
+3 rows in set (0.06 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_ssbackend |
++---------------------+
+| first               |
+| second              |
++---------------------+
+2 rows in set (0.01 sec)
+
+mysql> select * from first;
++-------+------------+--------+
+| name  | dob        | salary |
++-------+------------+--------+
+| rohit | 2023-08-23 |   1000 |
+| rahul | 2000-06-23 |  45222 |
++-------+------------+--------+
+2 rows in set (0.05 sec)
+
+mysql> insert into first (name,dob,salary) values("raj","2022-01-04",455255);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into first (name,dob,salary) values("raj","2022-01-04",455255),("rajesh","2022-01-04",455255),("raj","2022-01-04",455255);
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from first;
++--------+------------+--------+
+| name   | dob        | salary |
++--------+------------+--------+
+| rohit  | 2023-08-23 |   1000 |
+| rahul  | 2000-06-23 |  45222 |
+| raj    | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
+| rajesh | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
++--------+------------+--------+
+6 rows in set (0.00 sec)
+
+mysql> delete  from  first where name="rajesh";
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from first;
++-------+------------+--------+
+| name  | dob        | salary |
++-------+------------+--------+
+| rohit | 2023-08-23 |   1000 |
+| rahul | 2000-06-23 |  45222 |
+| raj   | 2022-01-04 | 455255 |
+| raj   | 2022-01-04 | 455255 |
+| raj   | 2022-01-04 | 455255 |
++-------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> insert into first (name,dob,salary) values("raj","2022-01-04",455255),("rajesh","2022-01-04",455255),("raj","2022-01-04",455255);
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from first;
++--------+------------+--------+
+| name   | dob        | salary |
++--------+------------+--------+
+| rohit  | 2023-08-23 |   1000 |
+| rahul  | 2000-06-23 |  45222 |
+| raj    | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
+| rajesh | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
++--------+------------+--------+
+8 rows in set (0.00 sec)
+
+mysql>
+mysql> update first set name="poonam" where name="rajesh";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from first;
++--------+------------+--------+
+| name   | dob        | salary |
++--------+------------+--------+
+| rohit  | 2023-08-23 |   1000 |
+| rahul  | 2000-06-23 |  45222 |
+| raj    | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
++--------+------------+--------+
+8 rows in set (0.00 sec)
+
+mysql> update first set name="poonam" ;
+Query OK, 7 rows affected (0.04 sec)
+Rows matched: 8  Changed: 7  Warnings: 0
+
+mysql> select * from first;
++--------+------------+--------+
+| name   | dob        | salary |
++--------+------------+--------+
+| poonam | 2023-08-23 |   1000 |
+| poonam | 2000-06-23 |  45222 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
++--------+------------+--------+
+8 rows in set (0.00 sec)
+
+mysql> insert into first (name,dob,salary) values("raj","2022-01-04",455255),("rajesh","2022-01-04",455255),("raj","2022-01-04",455255);
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from first;
++--------+------------+--------+
+| name   | dob        | salary |
++--------+------------+--------+
+| poonam | 2023-08-23 |   1000 |
+| poonam | 2000-06-23 |  45222 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
+| rajesh | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
++--------+------------+--------+
+11 rows in set (0.00 sec)
+
+mysql> select * from first;
++--------+------------+--------+
+| name   | dob        | salary |
++--------+------------+--------+
+| poonam | 2023-08-23 |   1000 |
+| poonam | 2000-06-23 |  45222 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
+| rajesh | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
++--------+------------+--------+
+11 rows in set (0.01 sec)
+
+mysql> alter table first change salary income;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> alter table first change salary income(int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(int)' at line 1
+mysql> alter table first change salary income decimal;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from first;
++--------+------------+--------+
+| name   | dob        | income |
++--------+------------+--------+
+| poonam | 2023-08-23 |   1000 |
+| poonam | 2000-06-23 |  45222 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| poonam | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
+| rajesh | 2022-01-04 | 455255 |
+| raj    | 2022-01-04 | 455255 |
++--------+------------+--------+
+11 rows in set (0.00 sec)
+
+mysql> alter table first change salary decimal;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'decimal' at line 1
+mysql>
+mysql> alter table first add rank decimal;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rank decimal' at line 1
+mysql> alter table first add rank decimal defalut 12;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rank decimal defalut 12' at line 1
+mysql> alter table first add state varchar(10) default  "maha";
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table first add rank decimal default 12;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rank decimal default 12' at line 1
+mysql> exit
+Bye
+
+C:\Users\cmroh>mysql -u root -p;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+
+C:\Users\cmroh>mysql -u root -p
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 35
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| movie2             |
+| movie_             |
+| mysql              |
+| performance_schema |
+| rohit_1            |
+| rohit_2            |
+| sakila             |
+| ssbackend          |
+| sys                |
+| world              |
++--------------------+
+11 rows in set (0.04 sec)
+
+mysql> use Ssbackend;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_ssbackend |
++---------------------+
+| first               |
+| second              |
++---------------------+
+2 rows in set (0.04 sec)
+
+mysql> select * from First;
++--------+------------+--------+-------+
+| name   | dob        | income | state |
++--------+------------+--------+-------+
+| poonam | 2023-08-23 |   1000 | maha  |
+| poonam | 2000-06-23 |  45222 | maha  |
+| poonam | 2022-01-04 | 455255 | maha  |
+| poonam | 2022-01-04 | 455255 | maha  |
+| poonam | 2022-01-04 | 455255 | maha  |
+| poonam | 2022-01-04 | 455255 | maha  |
+| poonam | 2022-01-04 | 455255 | maha  |
+| poonam | 2022-01-04 | 455255 | maha  |
+| raj    | 2022-01-04 | 455255 | maha  |
+| rajesh | 2022-01-04 | 455255 | maha  |
+| raj    | 2022-01-04 | 455255 | maha  |
++--------+------------+--------+-------+
+11 rows in set (0.00 sec)
+
+mysql>

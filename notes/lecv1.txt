@@ -1,0 +1,206 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\Users\cmroh> mysql -u root -p
+Enter password: **********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 32
+Server version: 8.0.33 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databeses;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databeses' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| movie2             |
+| movie_             |
+| mysql              |
+| performance_schema |
+| rohit_1            |
+| rohit_2            |
+| sakila             |
+| ssbackend          |
+| sys                |
+| world              |
++--------------------+
+11 rows in set (0.06 sec)
+
+mysql> use ssbackend
+Database changed
+mysql> show table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> show tables;
++---------------------+
+| Tables_in_ssbackend |
++---------------------+
+| first               |
+| second              |
++---------------------+
+2 rows in set (0.06 sec)
+
+mysql> select * from second;
++---------------+------------+--------+
+| name          | dob        | gender |
++---------------+------------+--------+
+| yadav         | 2023-08-23 | male   |
+| Rohit Yadav   | 2000-01-23 | male   |
+| piyush Yadav  | 2000-05-23 | male   |
+| anjali Yadav  | 2000-05-03 | female |
+| anjali Yadav  | 2000-05-03 | female |
+| sonam Yadav   | 2005-05-03 | female |
+| manjit Yadav  | 2000-01-07 | male   |
+| kaushal Yadav | 2000-08-06 | male   |
++---------------+------------+--------+
+8 rows in set (0.04 sec)
+
+mysql> select * from second where gender="male";
++---------------+------------+--------+
+| name          | dob        | gender |
++---------------+------------+--------+
+| yadav         | 2023-08-23 | male   |
+| Rohit Yadav   | 2000-01-23 | male   |
+| piyush Yadav  | 2000-05-23 | male   |
+| manjit Yadav  | 2000-01-07 | male   |
+| kaushal Yadav | 2000-08-06 | male   |
++---------------+------------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from second where name like "%it"
+    ->
+    -> ^C
+mysql> select * from second where name like "%it";
+Empty set (0.04 sec)
+
+mysql> select * from second where name like "%it%;
+    ">
+    "> ^C
+mysql>
+mysql> select * from second where name like "%it%";
++--------------+------------+--------+
+| name         | dob        | gender |
++--------------+------------+--------+
+| Rohit Yadav  | 2000-01-23 | male   |
+| manjit Yadav | 2000-01-07 | male   |
++--------------+------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from second where not gender="male";
++--------------+------------+--------+
+| name         | dob        | gender |
++--------------+------------+--------+
+| anjali Yadav | 2000-05-03 | female |
+| anjali Yadav | 2000-05-03 | female |
+| sonam Yadav  | 2005-05-03 | female |
++--------------+------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from second order by name;
++---------------+------------+--------+
+| name          | dob        | gender |
++---------------+------------+--------+
+| anjali Yadav  | 2000-05-03 | female |
+| anjali Yadav  | 2000-05-03 | female |
+| kaushal Yadav | 2000-08-06 | male   |
+| manjit Yadav  | 2000-01-07 | male   |
+| piyush Yadav  | 2000-05-23 | male   |
+| Rohit Yadav   | 2000-01-23 | male   |
+| sonam Yadav   | 2005-05-03 | female |
+| yadav         | 2023-08-23 | male   |
++---------------+------------+--------+
+8 rows in set (0.04 sec)
+
+mysql> select * from second order by dob;
++---------------+------------+--------+
+| name          | dob        | gender |
++---------------+------------+--------+
+| manjit Yadav  | 2000-01-07 | male   |
+| Rohit Yadav   | 2000-01-23 | male   |
+| anjali Yadav  | 2000-05-03 | female |
+| anjali Yadav  | 2000-05-03 | female |
+| piyush Yadav  | 2000-05-23 | male   |
+| kaushal Yadav | 2000-08-06 | male   |
+| sonam Yadav   | 2005-05-03 | female |
+| yadav         | 2023-08-23 | male   |
++---------------+------------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select * from second order by name desc;
++---------------+------------+--------+
+| name          | dob        | gender |
++---------------+------------+--------+
+| yadav         | 2023-08-23 | male   |
+| sonam Yadav   | 2005-05-03 | female |
+| Rohit Yadav   | 2000-01-23 | male   |
+| piyush Yadav  | 2000-05-23 | male   |
+| manjit Yadav  | 2000-01-07 | male   |
+| kaushal Yadav | 2000-08-06 | male   |
+| anjali Yadav  | 2000-05-03 | female |
+| anjali Yadav  | 2000-05-03 | female |
++---------------+------------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select * from second order by dob desc;
++---------------+------------+--------+
+| name          | dob        | gender |
++---------------+------------+--------+
+| yadav         | 2023-08-23 | male   |
+| sonam Yadav   | 2005-05-03 | female |
+| kaushal Yadav | 2000-08-06 | male   |
+| piyush Yadav  | 2000-05-23 | male   |
+| anjali Yadav  | 2000-05-03 | female |
+| anjali Yadav  | 2000-05-03 | female |
+| Rohit Yadav   | 2000-01-23 | male   |
+| manjit Yadav  | 2000-01-07 | male   |
++---------------+------------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select * from second order by dob desc limit 1;
++-------+------------+--------+
+| name  | dob        | gender |
++-------+------------+--------+
+| yadav | 2023-08-23 | male   |
++-------+------------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from second order by dob desc limit 2;
++-------------+------------+--------+
+| name        | dob        | gender |
++-------------+------------+--------+
+| yadav       | 2023-08-23 | male   |
+| sonam Yadav | 2005-05-03 | female |
++-------------+------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from second limit 2;
++-------------+------------+--------+
+| name        | dob        | gender |
++-------------+------------+--------+
+| yadav       | 2023-08-23 | male   |
+| Rohit Yadav | 2000-01-23 | male   |
++-------------+------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select * from second order by dob limit 2 where gender="male";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where gender="male"' at line 1
+mysql> select * from second  where gender="male"  order by dob limit 2;
++--------------+------------+--------+
+| name         | dob        | gender |
++--------------+------------+--------+
+| manjit Yadav | 2000-01-07 | male   |
+| Rohit Yadav  | 2000-01-23 | male   |
++--------------+------------+--------+
+2 rows in set (0.04 sec)
+
+mysql>

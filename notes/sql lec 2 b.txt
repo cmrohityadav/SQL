@@ -1,0 +1,171 @@
+mysql> select * from actor;
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| Rohit     | yadav    | male   |      400 |
+| rahul     | singh    | male   |      500 |
+| poonam    | yadav    | female |     4000 |
+| kiran     | yadav    | female |     5000 |
+| fiaza     | khan     | female |     5000 |
++-----------+----------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select *from actor where networth>=4000;
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| poonam    | yadav    | female |     4000 |
+| kiran     | yadav    | female |     5000 |
+| fiaza     | khan     | female |     5000 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from actor where networth >400 or networth <4000;
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| Rohit     | yadav    | male   |      400 |
+| rahul     | singh    | male   |      500 |
+| poonam    | yadav    | female |     4000 |
+| kiran     | yadav    | female |     5000 |
+| fiaza     | khan     | female |     5000 |
++-----------+----------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select *from actor where gender = "male";
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| Rohit     | yadav    | male   |      400 |
+| rahul     | singh    | male   |      500 |
++-----------+----------+--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select firstname,networth from actor;
++-----------+----------+
+| firstname | networth |
++-----------+----------+
+| Rohit     |      400 |
+| rahul     |      500 |
+| poonam    |     4000 |
+| kiran     |     5000 |
+| fiaza     |     5000 |
++-----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select *from actor where lastname="yadav";
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| Rohit     | yadav    | male   |      400 |
+| poonam    | yadav    | female |     4000 |
+| kiran     | yadav    | female |     5000 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select *from actor where firstname like "r%";
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| Rohit     | yadav    | male   |      400 |
+| rahul     | singh    | male   |      500 |
++-----------+----------+--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from actor where lastname like "%gh";
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| rahul     | singh    | male   |      500 |
++-----------+----------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> select *from actor where firstname like "%f%";
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| fiaza     | khan     | female |     5000 |
++-----------+----------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql> select *from actor order by networth asc;
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| Rohit     | yadav    | male   |      400 |
+| rahul     | singh    | male   |      500 |
+| poonam    | yadav    | female |     4000 |
+| kiran     | yadav    | female |     5000 |
+| fiaza     | khan     | female |     5000 |
++-----------+----------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select *from actor order by networth desc;
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| kiran     | yadav    | female |     5000 |
+| fiaza     | khan     | female |     5000 |
+| poonam    | yadav    | female |     4000 |
+| rahul     | singh    | male   |      500 |
+| Rohit     | yadav    | male   |      400 |
++-----------+----------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select *from actor where firstname like "r%" order by networth desc;
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| rahul     | singh    | male   |      500 |
+| Rohit     | yadav    | male   |      400 |
++-----------+----------+--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from actor limit 2;
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| Rohit     | yadav    | male   |      400 |
+| rahul     | singh    | male   |      500 |
++-----------+----------+--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> select *from actor;
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| Rohit     | yadav    | male   |      400 |
+| rahul     | singh    | male   |      500 |
+| poonam    | yadav    | female |     4000 |
+| kiran     | yadav    | female |     5000 |
+| fiaza     | khan     | female |     5000 |
++-----------+----------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> select *from actor  limit 4 offset 2;
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| poonam    | yadav    | female |     4000 |
+| kiran     | yadav    | female |     5000 |
+| fiaza     | khan     | female |     5000 |
++-----------+----------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql> update actor set networth =100000 where firstname ="rohit";
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from actor;
++-----------+----------+--------+----------+
+| firstName | lastName | gender | networth |
++-----------+----------+--------+----------+
+| Rohit     | yadav    | male   |   100000 |
+| rahul     | singh    | male   |      500 |
+| poonam    | yadav    | female |     4000 |
+| kiran     | yadav    | female |     5000 |
+| fiaza     | khan     | female |     5000 |
++-----------+----------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql>
