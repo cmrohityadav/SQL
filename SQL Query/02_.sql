@@ -55,5 +55,52 @@ values (001,'manager','2016-02-20 00:00:00'),
       (006,'lead','2016-06-11 00:00:00'),
   (003,'lead','2016-06-11 00:00:00');
   
+  select * from worker;
+  select salary from worker;
+  select firstName, salary from worker;
+  
+/* dual table-- */ 
+ select now();
+ select 44+10;
+ select lcase('Rohit');
+ select ucase('rohit');
+ 
+ /* where */
+ select * from worker where salary <100000;
+ select * from worker where department = 'admin';
+ 
+ /* between*/
+ select * from worker where salary between 80000 and 300000;
+ 
+ /* reduce or statement */
+ select * from worker where department ='hr' or department='admin';
+ 
+ select * from worker where department ='hr' or department='admin' or department = 'account';
+ 
+ /*better way :in */
+ select * from worker where department in('hr','admin');
+ /*not */
+  select * from worker where department not in('hr','admin');
+  
+  
+/*wild card*/
+select * from worker;
+select * from worker where firstName like '%i%';
+select * from worker where firstName like '_i%';
+select * from worker where firstName like '%i__';
+select * from worker where firstName like '%i';
+select * from worker where firstName like '%k';
+
+/* distinct*/
+select department from worker;
+select distinct department from worker;
+
+
+
+ 
+ 
+ 
+ 
+  
 
        
