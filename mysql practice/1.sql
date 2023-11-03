@@ -25,6 +25,21 @@ select * from mytable where id=3;
 
 show databases;
 show tables;
+describe mytable;
+
+create table car(
+car_id int unsigned not null primary key,
+name varchar(255),
+price decimal (8,2)
+);
+drop table car;
+INSERT INTO CAR (`car_id`, `name`, `price`) VALUES (1, 'Audi A1', '20000');
+INSERT INTO CAR (`car_id`, `name`, `price`) VALUES (2, 'Audi A1', '15000');
+INSERT INTO CAR (`car_id`, `name`, `price`) VALUES (3, 'Audi A2', '40000');
+INSERT INTO CAR (`car_id`, `name`, `price`) VALUES (4, 'Audi A2', '40000');
+
+select  distinct * from car;
+
 
 
 
