@@ -107,7 +107,50 @@ on delete cascade
 );
 
 
--- 
+-- ALTER 
+--  To change the Schema
+
+-- ADD  column : to add new column
+alter table student 
+add column age int;
+
+-- Drop column : delete column
+alter table student 
+drop column age;
+
+-- Rename to  : rename of table
+alter table student 
+rename to class;
+
+-- Change Column : rename of column
+alter table student
+change column  age umar int; 
+
+-- modify : change data and constraint
+alter table student
+modify age long unique not null;
+
+
+-- TRUNCATE
+-- To delete all data of table but not table schema
+
+truncate table student;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
