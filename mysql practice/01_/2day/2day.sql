@@ -64,3 +64,6 @@ INSERT INTO learners(LearnerFirstName,LearnerLastName,LearnerPhoneNo,LearnerEmai
 )VALUES ("Akash","Mishra","9874561230","akash@gmail.com",'2024-01-21',1,4,"Amazon","LinkedIn",'2024-02-29',"Bengalure")
 
 SELECT * FROM learners
+
+INSERT INTO learners(LearnerFirstName,LearnerLastName,LearnerPhoneNo,LearnerEmailId,LearnerEnrollmentDate,SelectedCourses,YearOfExperience,LearnerCompany,SourceOfJoining,BatchStartDate,Location
+)VALUES ("akhil","George","879658247","akhil@gmail.com",'2024-01-21',1,4,"Amazon","LinkedIn",'2024-02-29',"Bengalure")
