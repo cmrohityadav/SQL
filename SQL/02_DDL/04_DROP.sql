@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS dropdb;
+
+USE dropdb
+
+SHOW DATABASES
+
+DROP DATABASE dropdb
+
+DROP TABLE chaistore
+
+TRUNCATE TABLE chaistore
+
