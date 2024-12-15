@@ -43,3 +43,30 @@ SELECT ctbl.custName AS "Customer Name" ,otbl.productName AS "Product Name",otbl
 FROM customers AS ctbl
 INNER JOIN orders otbl
 ON ctbl.customerId=otbl.custId
+
+
+--LFET JOIN
+SELECT ctbl.custName ,otbl.productName,otbl.qty
+FROM customers AS ctbl
+LEFT JOIN orders otbl
+ON ctbl.customerId=otbl.custId
+
+
+--RIGHT JOIN
+SELECT ctbl.custName ,otbl.productName,otbl.qty
+FROM customers AS ctbl
+RIGHT JOIN orders otbl
+ON ctbl.customerId=otbl.custId
+
+
+-- FULL OUTER JOIN
+SELECT ctbl.custName ,otbl.productName,otbl.qty
+FROM customers AS ctbl
+FULL OUTER JOIN orders otbl
+ON ctbl.customerId=otbl.custId
+
+-- CROSS
+SELECT ctbl.custName ,otbl.productName,otbl.qty
+FROM customers AS ctbl
+CROSS JOIN orders otbl
+
